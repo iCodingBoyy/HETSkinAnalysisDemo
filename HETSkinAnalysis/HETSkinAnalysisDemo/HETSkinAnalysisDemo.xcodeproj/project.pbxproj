@@ -1,0 +1,774 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BAD3A824310F8437379976E /* libPods-HETSkinAnalysisDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A12CC18B8AEBC5FEB70AF846 /* libPods-HETSkinAnalysisDemo.a */; };
+		6B1294A622DC7E1C00970F1A /* HSAFaceFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1294A522DC7E1C00970F1A /* HSAFaceFrame.m */; };
+		6B1294AB22DC879D00970F1A /* HSAFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1294AA22DC879D00970F1A /* HSAFace.m */; };
+		6B1D812C22E1665700BDEFB7 /* HSACloudAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D812B22E1665700BDEFB7 /* HSACloudAnalysisViewController.m */; };
+		6B1D813622E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D813522E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m */; };
+		6B1D816C22E1DECA00BDEFB7 /* HETSkinAnalysisBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B1D816A22E1DEAC00BDEFB7 /* HETSkinAnalysisBundle.bundle */; };
+		6B1D817122E1EA5800BDEFB7 /* HSAContant.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D817022E1EA5800BDEFB7 /* HSAContant.m */; };
+		6B24063522D42471009C1D75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24063422D42471009C1D75 /* AppDelegate.m */; };
+		6B24063822D42471009C1D75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24063722D42471009C1D75 /* ViewController.m */; };
+		6B24063B22D42471009C1D75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B24063922D42471009C1D75 /* Main.storyboard */; };
+		6B24063D22D42472009C1D75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B24063C22D42472009C1D75 /* Assets.xcassets */; };
+		6B24064022D42472009C1D75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B24063E22D42472009C1D75 /* LaunchScreen.storyboard */; };
+		6B24064322D42472009C1D75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24064222D42472009C1D75 /* main.m */; };
+		6B24064D22D42472009C1D75 /* HETSkinAnalysisDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24064C22D42472009C1D75 /* HETSkinAnalysisDemoTests.m */; };
+		6B24065822D42472009C1D75 /* HETSkinAnalysisDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24065722D42472009C1D75 /* HETSkinAnalysisDemoUITests.m */; };
+		6B240DDA22D4371E009C1D75 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B240DD922D4371E009C1D75 /* libstdc++.6.0.9.tbd */; };
+		6B240DDC22D43731009C1D75 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B240DDB22D43731009C1D75 /* libstdc++.tbd */; };
+		6B240DEE22D44168009C1D75 /* HSANavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240DED22D44168009C1D75 /* HSANavigationController.m */; };
+		6B240DF522D44206009C1D75 /* HSACommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240DF422D44206009C1D75 /* HSACommonViewController.m */; };
+		6B240DF822D4429B009C1D75 /* HSARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240DF722D4429B009C1D75 /* HSARootViewController.m */; };
+		6B240DFC22D45D60009C1D75 /* HSASkinCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240DFB22D45D60009C1D75 /* HSASkinCameraViewController.m */; };
+		6B240E0122D45D77009C1D75 /* HSAImageAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240E0022D45D77009C1D75 /* HSAImageAnalysisViewController.m */; };
+		6B690E4422E543400035698F /* HETSkinAnalysis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B690E4322E543400035698F /* HETSkinAnalysis.framework */; };
+		6B9FC65B22D76041000211CF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9FC65822D76041000211CF /* libz.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6B24064922D42472009C1D75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B24062822D42471009C1D75 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B24062F22D42471009C1D75;
+			remoteInfo = HETSkinAnalysisDemo;
+		};
+		6B24065422D42472009C1D75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B24062822D42471009C1D75 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B24062F22D42471009C1D75;
+			remoteInfo = HETSkinAnalysisDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6B1294A422DC7E1C00970F1A /* HSAFaceFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSAFaceFrame.h; sourceTree = "<group>"; };
+		6B1294A522DC7E1C00970F1A /* HSAFaceFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSAFaceFrame.m; sourceTree = "<group>"; };
+		6B1294A922DC879D00970F1A /* HSAFace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSAFace.h; sourceTree = "<group>"; };
+		6B1294AA22DC879D00970F1A /* HSAFace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSAFace.m; sourceTree = "<group>"; };
+		6B1D812A22E1665700BDEFB7 /* HSACloudAnalysisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSACloudAnalysisViewController.h; sourceTree = "<group>"; };
+		6B1D812B22E1665700BDEFB7 /* HSACloudAnalysisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSACloudAnalysisViewController.m; sourceTree = "<group>"; };
+		6B1D813422E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSACameraImageAnalysisViewController.h; sourceTree = "<group>"; };
+		6B1D813522E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSACameraImageAnalysisViewController.m; sourceTree = "<group>"; };
+		6B1D816A22E1DEAC00BDEFB7 /* HETSkinAnalysisBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HETSkinAnalysisBundle.bundle; sourceTree = "<group>"; };
+		6B1D816F22E1EA5800BDEFB7 /* HSAContant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSAContant.h; sourceTree = "<group>"; };
+		6B1D817022E1EA5800BDEFB7 /* HSAContant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSAContant.m; sourceTree = "<group>"; };
+		6B24063022D42471009C1D75 /* HETSkinAnalysisDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HETSkinAnalysisDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B24063322D42471009C1D75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6B24063422D42471009C1D75 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6B24063622D42471009C1D75 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6B24063722D42471009C1D75 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6B24063A22D42471009C1D75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6B24063C22D42472009C1D75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B24063F22D42472009C1D75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6B24064122D42472009C1D75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B24064222D42472009C1D75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6B24064822D42472009C1D75 /* HETSkinAnalysisDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HETSkinAnalysisDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B24064C22D42472009C1D75 /* HETSkinAnalysisDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HETSkinAnalysisDemoTests.m; sourceTree = "<group>"; };
+		6B24064E22D42472009C1D75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B24065322D42472009C1D75 /* HETSkinAnalysisDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HETSkinAnalysisDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B24065722D42472009C1D75 /* HETSkinAnalysisDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HETSkinAnalysisDemoUITests.m; sourceTree = "<group>"; };
+		6B24065922D42472009C1D75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B240DD922D4371E009C1D75 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		6B240DDB22D43731009C1D75 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		6B240DEC22D44168009C1D75 /* HSANavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSANavigationController.h; sourceTree = "<group>"; };
+		6B240DED22D44168009C1D75 /* HSANavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSANavigationController.m; sourceTree = "<group>"; };
+		6B240DF322D44206009C1D75 /* HSACommonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSACommonViewController.h; sourceTree = "<group>"; };
+		6B240DF422D44206009C1D75 /* HSACommonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSACommonViewController.m; sourceTree = "<group>"; };
+		6B240DF622D4429B009C1D75 /* HSARootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSARootViewController.h; sourceTree = "<group>"; };
+		6B240DF722D4429B009C1D75 /* HSARootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSARootViewController.m; sourceTree = "<group>"; };
+		6B240DFA22D45D60009C1D75 /* HSASkinCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSASkinCameraViewController.h; sourceTree = "<group>"; };
+		6B240DFB22D45D60009C1D75 /* HSASkinCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSASkinCameraViewController.m; sourceTree = "<group>"; };
+		6B240DFF22D45D77009C1D75 /* HSAImageAnalysisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSAImageAnalysisViewController.h; sourceTree = "<group>"; };
+		6B240E0022D45D77009C1D75 /* HSAImageAnalysisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSAImageAnalysisViewController.m; sourceTree = "<group>"; };
+		6B690E4322E543400035698F /* HETSkinAnalysis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HETSkinAnalysis.framework; sourceTree = "<group>"; };
+		6B74A86D22E2F2CC00556EE2 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		6B9FC65822D76041000211CF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A12CC18B8AEBC5FEB70AF846 /* libPods-HETSkinAnalysisDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HETSkinAnalysisDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9EDB9E830AA598A43970D7D /* Pods-HETSkinAnalysisDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HETSkinAnalysisDemo.release.xcconfig"; path = "Target Support Files/Pods-HETSkinAnalysisDemo/Pods-HETSkinAnalysisDemo.release.xcconfig"; sourceTree = "<group>"; };
+		DADC8061FBD4F3658141D4C6 /* Pods-HETSkinAnalysisDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HETSkinAnalysisDemo.debug.xcconfig"; path = "Target Support Files/Pods-HETSkinAnalysisDemo/Pods-HETSkinAnalysisDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6B24062D22D42471009C1D75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B9FC65B22D76041000211CF /* libz.tbd in Frameworks */,
+				6B240DDC22D43731009C1D75 /* libstdc++.tbd in Frameworks */,
+				6B240DDA22D4371E009C1D75 /* libstdc++.6.0.9.tbd in Frameworks */,
+				2BAD3A824310F8437379976E /* libPods-HETSkinAnalysisDemo.a in Frameworks */,
+				6B690E4422E543400035698F /* HETSkinAnalysis.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B24064522D42472009C1D75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B24065022D42472009C1D75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6B1294A122DC7DD900970F1A /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				6B1294A422DC7E1C00970F1A /* HSAFaceFrame.h */,
+				6B1294A522DC7E1C00970F1A /* HSAFaceFrame.m */,
+				6B1294A922DC879D00970F1A /* HSAFace.h */,
+				6B1294AA22DC879D00970F1A /* HSAFace.m */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		6B24062722D42471009C1D75 = {
+			isa = PBXGroup;
+			children = (
+				6B690E4322E543400035698F /* HETSkinAnalysis.framework */,
+				6B1D816A22E1DEAC00BDEFB7 /* HETSkinAnalysisBundle.bundle */,
+				6B24063222D42471009C1D75 /* HETSkinAnalysisDemo */,
+				6B24064B22D42472009C1D75 /* HETSkinAnalysisDemoTests */,
+				6B24065622D42472009C1D75 /* HETSkinAnalysisDemoUITests */,
+				6B24063122D42471009C1D75 /* Products */,
+				6B24067722D42594009C1D75 /* Frameworks */,
+				A0A7D0F4FD7C43A5CEA4D5A3 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		6B24063122D42471009C1D75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B24063022D42471009C1D75 /* HETSkinAnalysisDemo.app */,
+				6B24064822D42472009C1D75 /* HETSkinAnalysisDemoTests.xctest */,
+				6B24065322D42472009C1D75 /* HETSkinAnalysisDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B24063222D42471009C1D75 /* HETSkinAnalysisDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6B1294A122DC7DD900970F1A /* VIew */,
+				6B240DEB22D44135009C1D75 /* tabbar */,
+				6B240DE822D44129009C1D75 /* ViewController */,
+				6B24063322D42471009C1D75 /* AppDelegate.h */,
+				6B24063422D42471009C1D75 /* AppDelegate.m */,
+				6B24063622D42471009C1D75 /* ViewController.h */,
+				6B24063722D42471009C1D75 /* ViewController.m */,
+				6B24063922D42471009C1D75 /* Main.storyboard */,
+				6B24063C22D42472009C1D75 /* Assets.xcassets */,
+				6B24063E22D42472009C1D75 /* LaunchScreen.storyboard */,
+				6B24064122D42472009C1D75 /* Info.plist */,
+				6B24064222D42472009C1D75 /* main.m */,
+				6B1D816F22E1EA5800BDEFB7 /* HSAContant.h */,
+				6B1D817022E1EA5800BDEFB7 /* HSAContant.m */,
+			);
+			path = HETSkinAnalysisDemo;
+			sourceTree = "<group>";
+		};
+		6B24064B22D42472009C1D75 /* HETSkinAnalysisDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				6B24064C22D42472009C1D75 /* HETSkinAnalysisDemoTests.m */,
+				6B24064E22D42472009C1D75 /* Info.plist */,
+			);
+			path = HETSkinAnalysisDemoTests;
+			sourceTree = "<group>";
+		};
+		6B24065622D42472009C1D75 /* HETSkinAnalysisDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6B24065722D42472009C1D75 /* HETSkinAnalysisDemoUITests.m */,
+				6B24065922D42472009C1D75 /* Info.plist */,
+			);
+			path = HETSkinAnalysisDemoUITests;
+			sourceTree = "<group>";
+		};
+		6B24067722D42594009C1D75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B74A86D22E2F2CC00556EE2 /* Vision.framework */,
+				6B9FC65822D76041000211CF /* libz.tbd */,
+				6B240DDB22D43731009C1D75 /* libstdc++.tbd */,
+				6B240DD922D4371E009C1D75 /* libstdc++.6.0.9.tbd */,
+				A12CC18B8AEBC5FEB70AF846 /* libPods-HETSkinAnalysisDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B240DE822D44129009C1D75 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6B240DF322D44206009C1D75 /* HSACommonViewController.h */,
+				6B240DF422D44206009C1D75 /* HSACommonViewController.m */,
+				6B240DF622D4429B009C1D75 /* HSARootViewController.h */,
+				6B240DF722D4429B009C1D75 /* HSARootViewController.m */,
+				6B240DFA22D45D60009C1D75 /* HSASkinCameraViewController.h */,
+				6B240DFB22D45D60009C1D75 /* HSASkinCameraViewController.m */,
+				6B1D813422E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.h */,
+				6B1D813522E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m */,
+				6B240DFF22D45D77009C1D75 /* HSAImageAnalysisViewController.h */,
+				6B240E0022D45D77009C1D75 /* HSAImageAnalysisViewController.m */,
+				6B1D812A22E1665700BDEFB7 /* HSACloudAnalysisViewController.h */,
+				6B1D812B22E1665700BDEFB7 /* HSACloudAnalysisViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6B240DEB22D44135009C1D75 /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				6B240DEC22D44168009C1D75 /* HSANavigationController.h */,
+				6B240DED22D44168009C1D75 /* HSANavigationController.m */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
+		A0A7D0F4FD7C43A5CEA4D5A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DADC8061FBD4F3658141D4C6 /* Pods-HETSkinAnalysisDemo.debug.xcconfig */,
+				C9EDB9E830AA598A43970D7D /* Pods-HETSkinAnalysisDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6B24062F22D42471009C1D75 /* HETSkinAnalysisDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B24065C22D42472009C1D75 /* Build configuration list for PBXNativeTarget "HETSkinAnalysisDemo" */;
+			buildPhases = (
+				BD83C66D0AEEE0D3285D5E4F /* [CP] Check Pods Manifest.lock */,
+				6B24062C22D42471009C1D75 /* Sources */,
+				6B24062D22D42471009C1D75 /* Frameworks */,
+				6B24062E22D42471009C1D75 /* Resources */,
+				2257BD7D681CEA5363058DC3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HETSkinAnalysisDemo;
+			productName = HETSkinAnalysisDemo;
+			productReference = 6B24063022D42471009C1D75 /* HETSkinAnalysisDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6B24064722D42472009C1D75 /* HETSkinAnalysisDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B24065F22D42472009C1D75 /* Build configuration list for PBXNativeTarget "HETSkinAnalysisDemoTests" */;
+			buildPhases = (
+				6B24064422D42472009C1D75 /* Sources */,
+				6B24064522D42472009C1D75 /* Frameworks */,
+				6B24064622D42472009C1D75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B24064A22D42472009C1D75 /* PBXTargetDependency */,
+			);
+			name = HETSkinAnalysisDemoTests;
+			productName = HETSkinAnalysisDemoTests;
+			productReference = 6B24064822D42472009C1D75 /* HETSkinAnalysisDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6B24065222D42472009C1D75 /* HETSkinAnalysisDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B24066222D42472009C1D75 /* Build configuration list for PBXNativeTarget "HETSkinAnalysisDemoUITests" */;
+			buildPhases = (
+				6B24064F22D42472009C1D75 /* Sources */,
+				6B24065022D42472009C1D75 /* Frameworks */,
+				6B24065122D42472009C1D75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B24065522D42472009C1D75 /* PBXTargetDependency */,
+			);
+			name = HETSkinAnalysisDemoUITests;
+			productName = HETSkinAnalysisDemoUITests;
+			productReference = 6B24065322D42472009C1D75 /* HETSkinAnalysisDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B24062822D42471009C1D75 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "马远征";
+				TargetAttributes = {
+					6B24062F22D42471009C1D75 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					6B24064722D42472009C1D75 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 6B24062F22D42471009C1D75;
+					};
+					6B24065222D42472009C1D75 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 6B24062F22D42471009C1D75;
+					};
+				};
+			};
+			buildConfigurationList = 6B24062B22D42471009C1D75 /* Build configuration list for PBXProject "HETSkinAnalysisDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6B24062722D42471009C1D75;
+			productRefGroup = 6B24063122D42471009C1D75 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B24062F22D42471009C1D75 /* HETSkinAnalysisDemo */,
+				6B24064722D42472009C1D75 /* HETSkinAnalysisDemoTests */,
+				6B24065222D42472009C1D75 /* HETSkinAnalysisDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6B24062E22D42471009C1D75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B1D816C22E1DECA00BDEFB7 /* HETSkinAnalysisBundle.bundle in Resources */,
+				6B24064022D42472009C1D75 /* LaunchScreen.storyboard in Resources */,
+				6B24063D22D42472009C1D75 /* Assets.xcassets in Resources */,
+				6B24063B22D42471009C1D75 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B24064622D42472009C1D75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B24065122D42472009C1D75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2257BD7D681CEA5363058DC3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HETSkinAnalysisDemo/Pods-HETSkinAnalysisDemo-resources.sh",
+				"${PODS_ROOT}/QMUIKit/QMUIKit/QMUIResources/QMUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QMUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HETSkinAnalysisDemo/Pods-HETSkinAnalysisDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD83C66D0AEEE0D3285D5E4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HETSkinAnalysisDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6B24062C22D42471009C1D75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B1D817122E1EA5800BDEFB7 /* HSAContant.m in Sources */,
+				6B240DF522D44206009C1D75 /* HSACommonViewController.m in Sources */,
+				6B240DEE22D44168009C1D75 /* HSANavigationController.m in Sources */,
+				6B240E0122D45D77009C1D75 /* HSAImageAnalysisViewController.m in Sources */,
+				6B1D812C22E1665700BDEFB7 /* HSACloudAnalysisViewController.m in Sources */,
+				6B1D813622E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m in Sources */,
+				6B24063822D42471009C1D75 /* ViewController.m in Sources */,
+				6B240DF822D4429B009C1D75 /* HSARootViewController.m in Sources */,
+				6B24064322D42472009C1D75 /* main.m in Sources */,
+				6B1294A622DC7E1C00970F1A /* HSAFaceFrame.m in Sources */,
+				6B1294AB22DC879D00970F1A /* HSAFace.m in Sources */,
+				6B24063522D42471009C1D75 /* AppDelegate.m in Sources */,
+				6B240DFC22D45D60009C1D75 /* HSASkinCameraViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B24064422D42472009C1D75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B24064D22D42472009C1D75 /* HETSkinAnalysisDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B24064F22D42472009C1D75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B24065822D42472009C1D75 /* HETSkinAnalysisDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6B24064A22D42472009C1D75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B24062F22D42471009C1D75 /* HETSkinAnalysisDemo */;
+			targetProxy = 6B24064922D42472009C1D75 /* PBXContainerItemProxy */;
+		};
+		6B24065522D42472009C1D75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B24062F22D42471009C1D75 /* HETSkinAnalysisDemo */;
+			targetProxy = 6B24065422D42472009C1D75 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6B24063922D42471009C1D75 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B24063A22D42471009C1D75 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6B24063E22D42472009C1D75 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B24063F22D42472009C1D75 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6B24065A22D42472009C1D75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6B24065B22D42472009C1D75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6B24065D22D42472009C1D75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DADC8061FBD4F3658141D4C6 /* Pods-HETSkinAnalysisDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V3P2575GGE;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = HETSkinAnalysisDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.het.skinAnalysis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6B24065E22D42472009C1D75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9EDB9E830AA598A43970D7D /* Pods-HETSkinAnalysisDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V3P2575GGE;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = HETSkinAnalysisDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.het.skinAnalysis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6B24066022D42472009C1D75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HETSkinAnalysisDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastkit.demo.HETSkinAnalysisDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HETSkinAnalysisDemo.app/HETSkinAnalysisDemo";
+			};
+			name = Debug;
+		};
+		6B24066122D42472009C1D75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HETSkinAnalysisDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastkit.demo.HETSkinAnalysisDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HETSkinAnalysisDemo.app/HETSkinAnalysisDemo";
+			};
+			name = Release;
+		};
+		6B24066322D42472009C1D75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HETSkinAnalysisDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastkit.demo.HETSkinAnalysisDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HETSkinAnalysisDemo;
+			};
+			name = Debug;
+		};
+		6B24066422D42472009C1D75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HETSkinAnalysisDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastkit.demo.HETSkinAnalysisDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HETSkinAnalysisDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B24062B22D42471009C1D75 /* Build configuration list for PBXProject "HETSkinAnalysisDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B24065A22D42472009C1D75 /* Debug */,
+				6B24065B22D42472009C1D75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B24065C22D42472009C1D75 /* Build configuration list for PBXNativeTarget "HETSkinAnalysisDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B24065D22D42472009C1D75 /* Debug */,
+				6B24065E22D42472009C1D75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B24065F22D42472009C1D75 /* Build configuration list for PBXNativeTarget "HETSkinAnalysisDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B24066022D42472009C1D75 /* Debug */,
+				6B24066122D42472009C1D75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B24066222D42472009C1D75 /* Build configuration list for PBXNativeTarget "HETSkinAnalysisDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B24066322D42472009C1D75 /* Debug */,
+				6B24066422D42472009C1D75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B24062822D42471009C1D75 /* Project object */;
+}
