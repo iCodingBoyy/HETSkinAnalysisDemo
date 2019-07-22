@@ -3,12 +3,12 @@ workspace 'HETSkinAnalysis.xcworkspace'
 # Uncomment the next line to define a global platform for your project
  platform :ios, '8.0'
 
-target 'HETSkinAnalysis' do
-    project 'HETSkinAnalysis.xcodeproj'
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-  # Pods for HETSkinAnalysis
-end
+#target 'HETSkinAnalysis' do
+#    project 'HETSkinAnalysis.xcodeproj'
+#  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+#  # use_frameworks!
+#  # Pods for HETSkinAnalysis
+#end
 
 target 'HETSkinAnalysisDemo' do
     project 'HETSkinAnalysisDemo/HETSkinAnalysisDemo.xcodeproj'
@@ -16,5 +16,4 @@ target 'HETSkinAnalysisDemo' do
     pod 'QMUIKit'
     pod 'Masonry'
     pod 'YYKit'
-    pod 'HETOpenSDK'
 end

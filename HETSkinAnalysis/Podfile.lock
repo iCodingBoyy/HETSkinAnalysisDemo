@@ -1,5 +1,4 @@
 PODS:
-  - HETOpenSDK (0.1.4)
   - Masonry (1.1.0)
   - QMUIKit (2.9.3):
     - QMUIKit/QMUIComponents (= 2.9.3)
@@ -263,24 +262,21 @@ PODS:
   - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
-  - HETOpenSDK
   - Masonry
   - QMUIKit
   - YYKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - HETOpenSDK
     - Masonry
     - QMUIKit
     - YYKit
 
 SPEC CHECKSUMS:
-  HETOpenSDK: 9ed65e77a46cfcc16f822a00e8483b6ee413fd9a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   QMUIKit: 5b8f0a3ab60e42af1310bd40a6fe1b54d612d15c
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: f9f13c2c06bff4dd4c8dc04a9b3335b4a77bfe5d
+PODFILE CHECKSUM: e9f092fcaf67d8afd4f2ab24f63e880ca291933d
 
 COCOAPODS: 1.6.0.beta.2
