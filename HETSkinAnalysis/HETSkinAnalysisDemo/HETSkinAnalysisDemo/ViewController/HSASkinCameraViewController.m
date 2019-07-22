@@ -111,7 +111,7 @@
 {
     @weakify(self);
     _cameraPreView = [[UIView alloc]init];
-    _cameraPreView.backgroundColor = [UIColor redColor];
+    _cameraPreView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_cameraPreView];
     [self.cameraPreView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
@@ -314,6 +314,7 @@
     [_captureDevice setCaptureSampleBufferOutputBlock:^(AVCaptureOutput *output, CMSampleBufferRef sampleBuffer, AVCaptureConnection *connection) {
         // 对buffer的视频帧进行人脸识别与相关参数检测
         @strongify(self);
+        
         [self.faceEngine processVideoFrameBuffer:sampleBuffer faceInfoCallback:^(HETFaceAnalysisResult *analysisResult) {
             if (analysisResult) {
                 self.textView.text = analysisResult.printString;
@@ -332,8 +333,11 @@
             }
         }];
     }];
-    
-    [self.cameraPreView.layer insertSublayer:self.captureDevice.captureVideoPreviewLayer atIndex:0];
+    // 调整相机的frame
+    if (self.captureDevice && self.captureDevice.isCaptureDevicePrepared) {
+        self.captureDevice.captureVideoPreviewLayer.frame = self.cameraPreView.bounds;
+    }
+    [self.cameraPreView.layer insertSublayer:self.captureDevice.captureVideoPreviewLayer atIndex:0]; 
     [self.captureDevice startRuning];
 }
 

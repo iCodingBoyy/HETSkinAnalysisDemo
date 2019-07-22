@@ -12,6 +12,7 @@
 		6B1294AB22DC879D00970F1A /* HSAFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1294AA22DC879D00970F1A /* HSAFace.m */; };
 		6B1D812C22E1665700BDEFB7 /* HSACloudAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D812B22E1665700BDEFB7 /* HSACloudAnalysisViewController.m */; };
 		6B1D813622E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D813522E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m */; };
+		6B1D816C22E1DECA00BDEFB7 /* HETSkinAnalysisBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B1D816A22E1DEAC00BDEFB7 /* HETSkinAnalysisBundle.bundle */; };
 		6B1D817122E1EA5800BDEFB7 /* HSAContant.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D817022E1EA5800BDEFB7 /* HSAContant.m */; };
 		6B24063522D42471009C1D75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24063422D42471009C1D75 /* AppDelegate.m */; };
 		6B24063822D42471009C1D75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24063722D42471009C1D75 /* ViewController.m */; };
@@ -28,8 +29,6 @@
 		6B240DF822D4429B009C1D75 /* HSARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240DF722D4429B009C1D75 /* HSARootViewController.m */; };
 		6B240DFC22D45D60009C1D75 /* HSASkinCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240DFB22D45D60009C1D75 /* HSASkinCameraViewController.m */; };
 		6B240E0122D45D77009C1D75 /* HSAImageAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B240E0022D45D77009C1D75 /* HSAImageAnalysisViewController.m */; };
-		6B690E4722E54C040035698F /* HETSkinAnalysis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B690E4522E54C040035698F /* HETSkinAnalysis.framework */; };
-		6B690E4822E54C040035698F /* HETSkinAnalysisBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B690E4622E54C040035698F /* HETSkinAnalysisBundle.bundle */; };
 		6B9FC65B22D76041000211CF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9FC65822D76041000211CF /* libz.tbd */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +58,7 @@
 		6B1D812B22E1665700BDEFB7 /* HSACloudAnalysisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSACloudAnalysisViewController.m; sourceTree = "<group>"; };
 		6B1D813422E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSACameraImageAnalysisViewController.h; sourceTree = "<group>"; };
 		6B1D813522E17CE100BDEFB7 /* HSACameraImageAnalysisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSACameraImageAnalysisViewController.m; sourceTree = "<group>"; };
+		6B1D816A22E1DEAC00BDEFB7 /* HETSkinAnalysisBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HETSkinAnalysisBundle.bundle; sourceTree = "<group>"; };
 		6B1D816F22E1EA5800BDEFB7 /* HSAContant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSAContant.h; sourceTree = "<group>"; };
 		6B1D817022E1EA5800BDEFB7 /* HSAContant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSAContant.m; sourceTree = "<group>"; };
 		6B24063022D42471009C1D75 /* HETSkinAnalysisDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HETSkinAnalysisDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,8 +89,6 @@
 		6B240DFB22D45D60009C1D75 /* HSASkinCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSASkinCameraViewController.m; sourceTree = "<group>"; };
 		6B240DFF22D45D77009C1D75 /* HSAImageAnalysisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSAImageAnalysisViewController.h; sourceTree = "<group>"; };
 		6B240E0022D45D77009C1D75 /* HSAImageAnalysisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSAImageAnalysisViewController.m; sourceTree = "<group>"; };
-		6B690E4522E54C040035698F /* HETSkinAnalysis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HETSkinAnalysis.framework; sourceTree = "<group>"; };
-		6B690E4622E54C040035698F /* HETSkinAnalysisBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HETSkinAnalysisBundle.bundle; sourceTree = "<group>"; };
 		6B74A86D22E2F2CC00556EE2 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		6B9FC65822D76041000211CF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A12CC18B8AEBC5FEB70AF846 /* libPods-HETSkinAnalysisDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HETSkinAnalysisDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +105,6 @@
 				6B240DDC22D43731009C1D75 /* libstdc++.tbd in Frameworks */,
 				6B240DDA22D4371E009C1D75 /* libstdc++.6.0.9.tbd in Frameworks */,
 				2BAD3A824310F8437379976E /* libPods-HETSkinAnalysisDemo.a in Frameworks */,
-				6B690E4722E54C040035698F /* HETSkinAnalysis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +139,7 @@
 		6B24062722D42471009C1D75 = {
 			isa = PBXGroup;
 			children = (
-				6B690E4522E54C040035698F /* HETSkinAnalysis.framework */,
-				6B690E4622E54C040035698F /* HETSkinAnalysisBundle.bundle */,
+				6B1D816A22E1DEAC00BDEFB7 /* HETSkinAnalysisBundle.bundle */,
 				6B24063222D42471009C1D75 /* HETSkinAnalysisDemo */,
 				6B24064B22D42472009C1D75 /* HETSkinAnalysisDemoTests */,
 				6B24065622D42472009C1D75 /* HETSkinAnalysisDemoUITests */,
@@ -357,7 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B690E4822E54C040035698F /* HETSkinAnalysisBundle.bundle in Resources */,
+				6B1D816C22E1DECA00BDEFB7 /* HETSkinAnalysisBundle.bundle in Resources */,
 				6B24064022D42472009C1D75 /* LaunchScreen.storyboard in Resources */,
 				6B24063D22D42472009C1D75 /* Assets.xcassets in Resources */,
 				6B24063B22D42471009C1D75 /* Main.storyboard in Resources */,
@@ -616,14 +612,9 @@
 			baseConfigurationReference = DADC8061FBD4F3658141D4C6 /* Pods-HETSkinAnalysisDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3P2575GGE;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				INFOPLIST_FILE = HETSkinAnalysisDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,9 +623,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.het.skinAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -643,14 +632,9 @@
 			baseConfigurationReference = C9EDB9E830AA598A43970D7D /* Pods-HETSkinAnalysisDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3P2575GGE;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				INFOPLIST_FILE = HETSkinAnalysisDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,9 +643,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.het.skinAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
