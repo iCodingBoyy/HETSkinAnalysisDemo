@@ -49,7 +49,8 @@
     HETSkinAnalysisConfiguration *config = [HETSkinAnalysisConfiguration defaultConfiguration];
     [config registerWithAppId:appId andSecret:appSecret];
     // 设置一个人脸识别引擎，如不设置将使用默认引擎
-    [config setFaceDetectionEngine:HETFaceDetectionEngineArcSoft];
+    [config setFaceDetectionEngine:HETFaceDetectionEngineDefault];
+    [config setDefaultCaptureDevicePosition:AVCaptureDevicePositionFront];
     // 设置语音播报文件，你可以根据需要自定义语音，这里使用默认语音
     [config setCustomVoice:[[HETSkinAnalysisVoice alloc]init]];
     // 设置人脸检测边界框，你可根据自己的需要绘制合适的人脸框来限制人脸捕捉区域，如果不设置，则使用全局视频区域

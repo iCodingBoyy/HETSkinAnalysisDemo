@@ -195,6 +195,8 @@
     switchButton.fillColor = [UIColor redColor];
     [switchButton setTitle:@"后置摄像头" forState:UIControlStateNormal];
     [switchButton setTitle:@"前置摄像头" forState:UIControlStateSelected];
+    AVCaptureDevicePosition position = [HETSkinAnalysisConfiguration getDefaultCaptureDevicePosition];
+    switchButton.selected = (position == AVCaptureDevicePositionBack);
     [switchButton addTarget:self action:@selector(clickToSwicthCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:switchButton];
     [switchButton mas_makeConstraints:^(MASConstraintMaker *make) {

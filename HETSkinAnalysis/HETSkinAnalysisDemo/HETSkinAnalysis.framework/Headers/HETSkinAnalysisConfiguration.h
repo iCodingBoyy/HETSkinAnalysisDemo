@@ -13,7 +13,6 @@
 
 typedef NS_ENUM(NSInteger, HETFaceDetectionEngine) {
     HETFaceDetectionEngineDefault, // 默认引擎
-    HETFaceDetectionEngineArcSoft,
     HETFaceDetectionEngineCustom,
 };
 
@@ -84,7 +83,14 @@ typedef NSString* (^HETModelToJSONBlock)(Class aClass, id aModel);
  
  warning 在自定义的相机做摄像头切换的时候应该更新此设置
  */
-+ (void)setDefaultCaptureDevicePosition:(AVCaptureDevicePosition)position;
+- (void)setDefaultCaptureDevicePosition:(AVCaptureDevicePosition)position;
+
+/**
+ 获取当前设置的默认摄像头方向
+ 
+ warning 只要设置了才能正确获取，否则使用未初始化的值
+ */
++ (AVCaptureDevicePosition)getDefaultCaptureDevicePosition;
 
 
 #pragma mark - 人脸检测引擎
