@@ -26,6 +26,8 @@
 
 - (void)dealloc
 {
+   NSLog(@"---%s---",__FUNCTION__);
+
     if (_faceEngine) {
         [_faceEngine destoryEngine];
         _faceEngine = nil;

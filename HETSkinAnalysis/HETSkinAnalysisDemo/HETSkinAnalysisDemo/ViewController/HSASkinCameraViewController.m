@@ -14,6 +14,7 @@
 #import "HSAFace.h"
 #import "HSACameraImageAnalysisViewController.h"
 #import "HSAContant.h"
+#import "HETSkinAnalysisConfig.h"
 
 @interface HSASkinCameraViewController ()
 @property (nonatomic, strong) UIView *cameraPreView;
@@ -65,7 +66,8 @@
             if (ret) {
                 // 改为静态图片识别
                 ret = [self.faceEngine changeFaceDetectMode:HETFaceDetectModeImage];
-                if (ret) {
+                if (ret)
+                {
 //                    // 进入图像分析页面
                     HSACameraImageAnalysisViewController *imageAnalysis = [[HSACameraImageAnalysisViewController alloc]init];
                     imageAnalysis.cameraImage = image;
@@ -118,10 +120,13 @@
         make.edges.equalTo(self.view);
     }];
     
+    HETSkinAnalysisConfig *dbConfig = [[HETSkinAnalysisConfig allObjects]firstObject];
     HSAFaceFrame *faceFrameView = [[HSAFaceFrame alloc]init];
     faceFrameView.backgroundColor = [UIColor clearColor];
     [self.cameraPreView addSubview:faceFrameView];
-    CGRect rect = CGRectInset(UIScreen.mainScreen.bounds, 20, 100);
+    CGRect rect = CGRectInset(UIScreen.mainScreen.bounds,
+                              dbConfig.faceDetectionBoundsInsetDx,
+                              dbConfig.faceDetectionBoundsInsetDy);
     [faceFrameView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.left.equalTo(self.cameraPreView).offset(rect.origin.x);
@@ -243,26 +248,79 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self makeConstraints];
     _faceViewArray = [[NSMutableArray alloc]init];
+    [self sdkConfig];
+    [self configFaceEngine];
+}
+
+- (void)sdkConfig
+{
+    HETSkinAnalysisConfig *dbConfig = [[HETSkinAnalysisConfig allObjects]firstObject];
     
-    _faceEngine = [[HETSkinAnalysisFaceEngine alloc]init];
-    // 如果config的人脸侦测引擎为HETFaceDetectionEngineCustom,请优先配置自定义引擎，否则无法进行肤质分析
-//    id<HETSkinAnalysisFaceEngineDelegate> myEngine = [[MyCustomEngine alloc]init];
-//    [_faceEngine setCustomFaceEngine:myEngine];
-    
-    if ([_faceEngine activeEngine:HETFaceDetectModeVideo]) {
-        [self initCaptureDevice];
-    }
-    else
-    {
-        NSLog(@"--人脸识别引擎无法激活--");
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"人脸识别引擎无法激活" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }]];
-        [self.navigationController presentViewController:alertController animated:YES completion:^{
-            
+    // 设置非静音，如果设置了静音，人脸识别将停止语音播报
+        [HETSkinAnalysisConfiguration setMute:NO];
+        
+        // 正式环境
+        NSString *appId = @"31374";
+        NSString *appSecret = @"705955fd634147d58f1be9f56b76e43f";
+        // 玫琳凯项目
+    //    NSString *appId = @"31377";
+    //    NSString *appSecret = @"abbdbfa1ce8d43d9a6f9aad1ef596b8d";
+        // 预发布环境
+    //    NSString *appId = @"31298";
+    //    NSString *appSecret = @"145a2540f00147e89dc5e33b6842f74c";
+        // 初始化自定义配置
+        HETSkinAnalysisConfiguration *config = [HETSkinAnalysisConfiguration defaultConfiguration];
+        [config registerWithAppId:appId andSecret:appSecret];
+        // 设置一个人脸识别引擎，如不设置将使用默认引擎
+        [config setFaceDetectionEngine:HETFaceDetectionEngineDefault];
+        // 设置初始化调用摄像头的位置
+        [config setDefaultCaptureDevicePosition:AVCaptureDevicePositionFront];
+        // 设置检测距离阈值
+        [config setMaxDetectionDistance:dbConfig.maxDetectionDistance];
+        [config setMinDetectionDistance:dbConfig.minDetectionDistance];
+        // 设置亮度检测阈值
+        [config setMinYUVLight:dbConfig.minYUVLight];
+        [config setMaxYUVLight:dbConfig.maxYUVLight];
+        // 设置侦测项
+        [config setFaceBoundsDetectionEnable:dbConfig.faceBoundsDetectionEnable];
+        [config setStandardFaceCheckEnable:dbConfig.standardFaceCheckEnable];
+        [config setYuvLightDetectionEnable:dbConfig.yuvLightDetectionEnable];
+        [config setDistanceDetectionEnable:dbConfig.distanceDetectionEnable];
+        
+        // 设置语音播报文件，你可以根据需要自定义语音，这里使用默认语音
+        [config setCustomVoice:[[HETSkinAnalysisVoice alloc]init]];
+        // 设置人脸检测边界框，你可根据自己的需要绘制合适的人脸框来限制人脸捕捉区域，如果不设置，则使用全局视频区域
+        [config setFaceDetectionBounds:CGRectInset(UIScreen.mainScreen.bounds, dbConfig.faceDetectionBoundsInsetDx, dbConfig.faceDetectionBoundsInsetDy)];
+        // 设置相机边界，人脸坐标转换需要参考此数值，如果不设置将无法转换人脸坐标到view窗口坐标系
+        [config setCameraBounds:[UIScreen mainScreen].bounds];
+        [config setJsonToModelBlock:^id(__unsafe_unretained Class aClass, id obj) {
+            id model =  [aClass modelWithJSON:obj];
+            return model;
         }];
-    }
+        [HETSkinAnalysisConfiguration setDefaultConfiguration:config];
+}
+#pragma mark - engine
+- (void)configFaceEngine
+{
+    _faceEngine = [[HETSkinAnalysisFaceEngine alloc]init];
+        // 如果config的人脸侦测引擎为HETFaceDetectionEngineCustom,请优先配置自定义引擎，否则无法进行肤质分析
+    //    id<HETSkinAnalysisFaceEngineDelegate> myEngine = [[MyCustomEngine alloc]init];
+    //    [_faceEngine setCustomFaceEngine:myEngine];
+        
+        if ([_faceEngine activeEngine:HETFaceDetectModeVideo]) {
+            [self initCaptureDevice];
+        }
+        else
+        {
+            NSLog(@"--人脸识别引擎无法激活--");
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"人脸识别引擎无法激活" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }]];
+            [self.navigationController presentViewController:alertController animated:YES completion:^{
+                
+            }];
+        }
 }
 
 #pragma mark - device
@@ -316,7 +374,6 @@
     [_captureDevice setCaptureSampleBufferOutputBlock:^(AVCaptureOutput *output, CMSampleBufferRef sampleBuffer, AVCaptureConnection *connection) {
         // 对buffer的视频帧进行人脸识别与相关参数检测
         @strongify(self);
-        
         [self.faceEngine processVideoFrameBuffer:sampleBuffer faceInfoCallback:^(HETFaceAnalysisResult *analysisResult) {
             if (analysisResult) {
                 self.textView.text = analysisResult.printString;

@@ -257,6 +257,9 @@ PODS:
     - QMUIKit/QMUILog
   - QMUIKit/QMUIResources (2.9.3)
   - QMUIKit/QMUIWeakObjectContainer (2.9.3)
+  - Realm (3.18.0):
+    - Realm/Headers (= 3.18.0)
+  - Realm/Headers (3.18.0)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -264,19 +267,22 @@ PODS:
 DEPENDENCIES:
   - Masonry
   - QMUIKit
+  - Realm
   - YYKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Masonry
     - QMUIKit
+    - Realm
     - YYKit
 
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   QMUIKit: 5b8f0a3ab60e42af1310bd40a6fe1b54d612d15c
+  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: e2c0292e69fe9a19bd36e852be94fc5ebf28be24
+PODFILE CHECKSUM: 96a1833a851d4fc49e91fd241373f01563d5fa50
 
 COCOAPODS: 1.6.0.beta.2

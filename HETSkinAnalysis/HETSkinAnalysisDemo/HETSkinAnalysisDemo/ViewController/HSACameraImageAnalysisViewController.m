@@ -24,6 +24,10 @@
 
 @implementation HSACameraImageAnalysisViewController
 
+- (void)dealloc
+{
+    NSLog(@"---%s---",__FUNCTION__);
+}
 
 #pragma mark - 按钮交互
 

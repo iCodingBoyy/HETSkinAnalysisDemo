@@ -17,6 +17,12 @@
 @end
 
 @implementation HSACloudAnalysisViewController
+- (void)dealloc
+{
+    NSLog(@"---%s---",__FUNCTION__);
+}
+
+
 
 - (void)makeConstraints
 {

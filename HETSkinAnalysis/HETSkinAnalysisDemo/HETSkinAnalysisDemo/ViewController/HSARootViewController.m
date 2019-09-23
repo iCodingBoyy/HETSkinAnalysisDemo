@@ -12,6 +12,9 @@
 #import "HSASkinCameraViewController.h"
 #import "HSAImageAnalysisViewController.h"
 #import <HETSkinAnalysis/HETSkinAnalysis.h>
+#import "RLMRealm+RLMDB.h"
+#import "HETSkinAnalysisConfig.h"
+#import "HSASettingViewController.h"
 
 @interface HSARootViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -35,33 +38,28 @@
     // Do any additional setup after loading the view.
     self.titleView.title = @"拍照测肤";
     [self makeConstraints];
+    [RLMRealm setDefaultRealmWithUser:@"LocalDB"];
     
-    // 设置非静音，如果设置了静音，人脸识别将停止语音播报
-    [HETSkinAnalysisConfiguration setMute:NO];
+    NSString *string = [NSString hetEncryptString:@"123456"];
+    NSLog(@"----string----%@",string);
     
-    // 正式环境
-    NSString *appId = @"31374";
-    NSString *appSecret = @"705955fd634147d58f1be9f56b76e43f";
-    // 预发布环境
-//    NSString *appId = @"31298";
-//    NSString *appSecret = @"145a2540f00147e89dc5e33b6842f74c";
-    // 初始化自定义配置
-    HETSkinAnalysisConfiguration *config = [HETSkinAnalysisConfiguration defaultConfiguration];
-    [config registerWithAppId:appId andSecret:appSecret];
-    // 设置一个人脸识别引擎，如不设置将使用默认引擎
-    [config setFaceDetectionEngine:HETFaceDetectionEngineDefault];
-    [config setDefaultCaptureDevicePosition:AVCaptureDevicePositionFront];
-    // 设置语音播报文件，你可以根据需要自定义语音，这里使用默认语音
-    [config setCustomVoice:[[HETSkinAnalysisVoice alloc]init]];
-    // 设置人脸检测边界框，你可根据自己的需要绘制合适的人脸框来限制人脸捕捉区域，如果不设置，则使用全局视频区域
-    [config setFaceDetectionBounds:CGRectInset(UIScreen.mainScreen.bounds, 20, 100)];
-    // 设置相机边界，人脸坐标转换需要参考此数值，如果不设置将无法转换人脸坐标到view窗口坐标系
-    [config setCameraBounds:[UIScreen mainScreen].bounds];
-    [config setJsonToModelBlock:^id(__unsafe_unretained Class aClass, id obj) {
-        id model =  [aClass modelWithJSON:obj];
-        return model;
-    }];
-    [HETSkinAnalysisConfiguration setDefaultConfiguration:config];
+    HETSkinAnalysisConfig *config = [[HETSkinAnalysisConfig allObjects]firstObject];
+    if (!config) {
+        config = [[HETSkinAnalysisConfig alloc]init];
+        config.faceBoundsDetectionEnable = YES;
+        config.yuvLightDetectionEnable = YES;
+        config.distanceDetectionEnable = YES;
+        config.standardFaceCheckEnable = YES;
+        config.maxDetectionDistance = 0.85;
+        config.minDetectionDistance = 0.65;
+        config.maxYUVLight = 220;
+        config.minYUVLight = 80;
+        config.faceDetectionBoundsInsetDx = 20;
+        config.faceDetectionBoundsInsetDy = 30;
+        [RLMRealm rlmTransactionWithBlock:^(RLMRealm *defaultRealm) {
+            [defaultRealm addObject:config];
+        }];
+    }
 }
 
 #pragma mark - UITableView
@@ -73,7 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -97,6 +95,10 @@
     else if (indexPath.row == 1)
     {
         cell.textLabel.text = @"静态人脸图片分析";
+    }
+    else
+    {
+        cell.textLabel.text = @"设置";
     }
     return cell;
 }
@@ -124,6 +126,12 @@
     {
         HSAImageAnalysisViewController *imageAnalysis = [[HSAImageAnalysisViewController alloc]init];
         [self.navigationController pushViewController:imageAnalysis animated:YES];
+    }
+    else
+    {
+        // 设置
+        HSASettingViewController *settingVC = [[HSASettingViewController alloc]init];
+        [self.navigationController pushViewController:settingVC animated:YES];
     }
 }
 
