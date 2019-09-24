@@ -382,6 +382,7 @@
                 [self.faceView drawFace:faces];
             }
         } result:^{
+            @strongify(self);
             if (self.shouldAutoTakePhotos) {
                 // 正常状态可以拍照
                 [self clickToTakePhotos:nil];

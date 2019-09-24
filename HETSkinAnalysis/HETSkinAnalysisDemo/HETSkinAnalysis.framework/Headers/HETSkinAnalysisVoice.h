@@ -24,6 +24,7 @@
 
 - (NSString*)getFrontCameraTakePhotoPromptVoiceText;
 
+
 #pragma mark - 请平视后置摄像头
 /**
  请平视后置摄像头
@@ -33,6 +34,7 @@
 - (NSString*)getRearCameraTakePhotoPromptVoice;
 
 - (NSString*)getRearCameraTakePhotoPromptVoiceText;
+
 
 #pragma mark - 请将脸部对准示意框
 /**

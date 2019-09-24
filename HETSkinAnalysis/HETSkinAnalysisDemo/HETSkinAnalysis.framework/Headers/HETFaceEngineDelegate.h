@@ -15,6 +15,7 @@
 @optional
 - (NSDictionary*)params;
 - (NSString*)logString;
+
 @required
 // 识别到的人脸边界，需要准换为视图坐标系的真实坐标
 - (CGRect)getfaceBounds;
