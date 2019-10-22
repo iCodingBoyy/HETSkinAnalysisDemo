@@ -15,7 +15,6 @@
 @optional
 - (NSDictionary*)params;
 - (NSString*)logString;
-
 @required
 // 识别到的人脸边界，需要准换为视图坐标系的真实坐标
 - (CGRect)getfaceBounds;
@@ -70,6 +69,7 @@ typedef NS_ENUM(NSInteger, HETFaceDetectMode) {
     HETFaceDetectModeVideo, // 视频帧侦测
     HETFaceDetectModeImage,// 图像侦测
 };
+typedef void(^HETVideoBufferProcessHandler)(UIImage *frameImage, NSArray<id<HETFaceAnalysisResultDelegate>> *faceFeatures);
 
 @protocol HETSkinAnalysisFaceEngineDelegate <NSObject>
 @required
@@ -128,6 +128,12 @@ typedef NS_ENUM(NSInteger, HETFaceDetectMode) {
  直接从buffer提取图像
  */
 - (NSArray<id<HETFaceAnalysisResultDelegate>> *)getFaceFeaturesFromVideoBuffer:(CMSampleBufferRef)sampleBuffer;
+
+
+/**
+ 提取buffer中的帧图像和人脸信息
+ */
+- (void)getFaceFeaturesAndFrameImageFromVideoBuffer:(CMSampleBufferRef)sampleBuffer result:(HETVideoBufferProcessHandler)retHandler;
 
 @end
 
