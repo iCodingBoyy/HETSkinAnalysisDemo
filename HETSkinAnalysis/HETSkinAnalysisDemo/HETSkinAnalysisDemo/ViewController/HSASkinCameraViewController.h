@@ -8,10 +8,8 @@
 
 #import "HSACommonViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface HSASkinCameraViewController : HSACommonViewController
 
 @end
 
-NS_ASSUME_NONNULL_END

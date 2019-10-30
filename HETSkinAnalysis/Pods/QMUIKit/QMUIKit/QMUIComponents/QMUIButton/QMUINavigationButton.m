@@ -603,8 +603,8 @@ static char kAssociatedObjectKey_tempRightBarButtonItems;
                 UIView *contentView = selfObject.qmui_contentView;
                 if (contentView) {
                     NSDirectionalEdgeInsets value = contentView.directionalLayoutMargins;
-                    value.leading = value.trailing - (selfObject.qmui_customizingBackBarButtonItem ? 8 : 0);
-                    contentView.directionalLayoutMargins = value;
+//                    value.leading = value.trailing - (selfObject.qmui_customizingBackBarButtonItem ? 8 : 0);
+//                    contentView.directionalLayoutMargins = value;
                 }
             });
         }

@@ -15,6 +15,7 @@
 #import "HSACameraImageAnalysisViewController.h"
 #import "HSAContant.h"
 #import "HETSkinAnalysisConfig.h"
+#import <QMUIKit/QMUIKit.h>
 
 @interface HSASkinCameraViewController ()
 @property (nonatomic, strong) UIView *cameraPreView;
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, assign) BOOL shouldAutoTakePhotos;
 @property (nonatomic, strong) HSAFace *faceView;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, assign) HETFaceAnalysisStatus faceAnalysisStatus;
 @end
 
 @implementation HSASkinCameraViewController
@@ -47,7 +50,7 @@
 
 - (void)clickToSwicthCamera:(UIButton*)sender
 {
-    AVCaptureDevicePosition position = [self.captureDevice swicthCamera];
+    AVCaptureDevicePosition position = [self.captureDevice switchCamera];
     sender.selected = (position == AVCaptureDevicePositionBack);
 }
 
@@ -56,39 +59,22 @@
 {
     NSLog(@"---开始拍照--");
     @weakify(self);
-    [self.captureDevice captureStillImageAsynchronously:YES result:^(UIImage *image, NSError *error) {
+    [self.captureDevice captureStillImageAsynchronously:NO result:^(UIImage *image, NSError *error) {
         if (image) {
             @strongify(self);
-            NSLog(@"---拍照成功--");
+            NSLog(@"---拍照成功--%@",NSStringFromCGSize(image.size));
+            // 如果触发了拍照，但是拍照过程中人脸状态发生了变化，不符合肤质分析要求，则在在此做处理
+            if (self.faceAnalysisStatus != HETFaceAnalysisStatusCanTakePhoto) {
+                // 提示用户并处理，重新录制视频帧以便用户重新拍照
+                [self.captureDevice startRuning]; 
+                return ;
+            }
             [self.captureDevice stopRuning];
-            NSError *aError;
-            BOOL ret = [self.faceEngine isValidImageForSkinAnalysis:image error:&aError];
-            if (ret) {
-                // 改为静态图片识别
-                ret = [self.faceEngine changeFaceDetectMode:HETFaceDetectModeImage];
-                if (ret)
-                {
-//                    // 进入图像分析页面
-                    HSACameraImageAnalysisViewController *imageAnalysis = [[HSACameraImageAnalysisViewController alloc]init];
-                    imageAnalysis.cameraImage = image;
-                    imageAnalysis.faceEngine = self.faceEngine;
-                    [self.navigationController pushViewController:imageAnalysis animated:YES];
-                }
-                else
-                {
-                    NSLog(@"--无法修改人脸检测模式--");
-                }
-            }
-            else
-            {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:aError.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self.captureDevice startRuning];
-                }]];
-                [self.navigationController presentViewController:alertController animated:YES completion:^{
-
-                }];
-            }
+            // 进入图像分析页面
+            HSACameraImageAnalysisViewController *imageAnalysis = [[HSACameraImageAnalysisViewController alloc]init];
+            imageAnalysis.cameraImage = image;
+            imageAnalysis.faceEngine = self.faceEngine;
+            [self.navigationController pushViewController:imageAnalysis animated:YES];
         }
         else
         {
@@ -127,6 +113,7 @@
     CGRect rect = CGRectInset(UIScreen.mainScreen.bounds,
                               dbConfig.faceDetectionBoundsInsetDx,
                               dbConfig.faceDetectionBoundsInsetDy);
+//    rect = CGRectMake(46, 52, 283, 363);
     [faceFrameView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.left.equalTo(self.cameraPreView).offset(rect.origin.x);
@@ -205,6 +192,7 @@
     [switchButton addTarget:self action:@selector(clickToSwicthCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:switchButton];
     [switchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.right.equalTo(self.view).offset(-20);
         make.bottom.equalTo(self.view).offset(-34);
         make.width.equalTo(@(120));
@@ -218,10 +206,22 @@
     [snapButton addTarget:self action:@selector(clickToTakePhotos:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:snapButton];
     [snapButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.left.equalTo(self.view).offset(20);
         make.bottom.equalTo(self.view).offset(-34);
         make.width.equalTo(@(120));
         make.height.equalTo(@(40));
+    }];
+    
+    _imageView = [[UIImageView alloc]init];
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:_imageView];
+    [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.left.equalTo(self.view);
+        make.centerY.equalTo(self.view.mas_centerY);
+        make.width.equalTo(@(120));
+        make.height.equalTo(@(120));
     }];
     
     [UIView performWithoutAnimation:^{
@@ -257,47 +257,55 @@
     HETSkinAnalysisConfig *dbConfig = [[HETSkinAnalysisConfig allObjects]firstObject];
     
     // 设置非静音，如果设置了静音，人脸识别将停止语音播报
-        [HETSkinAnalysisConfiguration setMute:NO];
-        
-        // 正式环境
-        NSString *appId = @"31374";
-        NSString *appSecret = @"705955fd634147d58f1be9f56b76e43f";
-        // 玫琳凯项目
-    //    NSString *appId = @"31377";
-    //    NSString *appSecret = @"abbdbfa1ce8d43d9a6f9aad1ef596b8d";
-        // 预发布环境
-    //    NSString *appId = @"31298";
-    //    NSString *appSecret = @"145a2540f00147e89dc5e33b6842f74c";
-        // 初始化自定义配置
-        HETSkinAnalysisConfiguration *config = [HETSkinAnalysisConfiguration defaultConfiguration];
-        [config registerWithAppId:appId andSecret:appSecret];
-        // 设置一个人脸识别引擎，如不设置将使用默认引擎
-        [config setFaceDetectionEngine:HETFaceDetectionEngineDefault];
-        // 设置初始化调用摄像头的位置
-        [config setDefaultCaptureDevicePosition:AVCaptureDevicePositionFront];
-        // 设置检测距离阈值
-        [config setMaxDetectionDistance:dbConfig.maxDetectionDistance];
-        [config setMinDetectionDistance:dbConfig.minDetectionDistance];
-        // 设置亮度检测阈值
-        [config setMinYUVLight:dbConfig.minYUVLight];
-        [config setMaxYUVLight:dbConfig.maxYUVLight];
-        // 设置侦测项
-        [config setFaceBoundsDetectionEnable:dbConfig.faceBoundsDetectionEnable];
-        [config setStandardFaceCheckEnable:dbConfig.standardFaceCheckEnable];
-        [config setYuvLightDetectionEnable:dbConfig.yuvLightDetectionEnable];
-        [config setDistanceDetectionEnable:dbConfig.distanceDetectionEnable];
-        
-        // 设置语音播报文件，你可以根据需要自定义语音，这里使用默认语音
-        [config setCustomVoice:[[HETSkinAnalysisVoice alloc]init]];
-        // 设置人脸检测边界框，你可根据自己的需要绘制合适的人脸框来限制人脸捕捉区域，如果不设置，则使用全局视频区域
-        [config setFaceDetectionBounds:CGRectInset(UIScreen.mainScreen.bounds, dbConfig.faceDetectionBoundsInsetDx, dbConfig.faceDetectionBoundsInsetDy)];
-        // 设置相机边界，人脸坐标转换需要参考此数值，如果不设置将无法转换人脸坐标到view窗口坐标系
-        [config setCameraBounds:[UIScreen mainScreen].bounds];
-        [config setJsonToModelBlock:^id(__unsafe_unretained Class aClass, id obj) {
-            id model =  [aClass modelWithJSON:obj];
-            return model;
-        }];
-        [HETSkinAnalysisConfiguration setDefaultConfiguration:config];
+    [HETSkinAnalysisConfiguration setMute:NO];
+    
+    // 正式环境
+    NSString *appId = @"31374";
+    NSString *appSecret = @"705955fd634147d58f1be9f56b76e43f";
+    // 玫琳凯项目
+//    NSString *appId = @"31377";
+//    NSString *appSecret = @"abbdbfa1ce8d43d9a6f9aad1ef596b8d";
+    // 预发布环境
+//    NSString *appId = @"31298";
+//    NSString *appSecret = @"145a2540f00147e89dc5e33b6842f74c";
+    // 初始化自定义配置
+    HETSkinAnalysisConfiguration *config = [HETSkinAnalysisConfiguration defaultConfiguration];
+    [config registerWithAppId:appId andSecret:appSecret];
+    // 设置一个人脸识别引擎，如不设置将使用默认引擎
+    [config setFaceDetectionEngine:HETFaceDetectionEngineDefault];
+    // 设置初始化调用摄像头的位置
+    [config setDefaultCaptureDevicePosition:AVCaptureDevicePositionBack];
+    // 设置检测距离阈值
+    [config setMaxDetectionDistance:dbConfig.maxDetectionDistance];
+    [config setMinDetectionDistance:dbConfig.minDetectionDistance];
+//    [config setMaxDetectionDistance:0.85f];
+//    [config setMinDetectionDistance:0.35f];
+
+    // 设置亮度检测阈值
+    [config setMinYUVLight:dbConfig.minYUVLight];
+    [config setMaxYUVLight:dbConfig.maxYUVLight];
+//    [config setMinYUVLight:80];
+//    [config setMaxYUVLight:220];
+    // 设置侦测项
+    [config setFaceBoundsDetectionEnable:dbConfig.faceBoundsDetectionEnable];
+    [config setStandardFaceCheckEnable:dbConfig.standardFaceCheckEnable];
+    [config setYuvLightDetectionEnable:dbConfig.yuvLightDetectionEnable];
+    [config setDistanceDetectionEnable:dbConfig.distanceDetectionEnable];
+    
+    // 设置语音播报文件，你可以根据需要自定义语音，这里使用默认语音
+    [config setCustomVoice:[[HETSkinAnalysisVoice alloc]init]];
+    // 设置人脸检测边界框，你可根据自己的需要绘制合适的人脸框来限制人脸捕捉区域，如果不设置，则使用全局视频区域
+    [config setFaceDetectionBounds:CGRectInset(UIScreen.mainScreen.bounds, dbConfig.faceDetectionBoundsInsetDx, dbConfig.faceDetectionBoundsInsetDy)];
+    CGFloat MKScale = 1.0;
+//    [config setFaceDetectionBounds:CGRectMake(46*MKScale, 52*MKScale, 283*MKScale, 363*MKScale)];
+
+    // 设置相机边界，人脸坐标转换需要参考此数值，如果不设置将无法转换人脸坐标到view窗口坐标系
+    [config setCameraBounds:[UIScreen mainScreen].bounds];
+    [config setJsonToModelBlock:^id(__unsafe_unretained Class aClass, id obj) {
+        id model =  [aClass modelWithJSON:obj];
+        return model;
+    }];
+    [HETSkinAnalysisConfiguration setDefaultConfiguration:config];
 }
 #pragma mark - engine
 - (void)configFaceEngine
@@ -306,21 +314,22 @@
         // 如果config的人脸侦测引擎为HETFaceDetectionEngineCustom,请优先配置自定义引擎，否则无法进行肤质分析
     //    id<HETSkinAnalysisFaceEngineDelegate> myEngine = [[MyCustomEngine alloc]init];
     //    [_faceEngine setCustomFaceEngine:myEngine];
-        
-        if ([_faceEngine activeEngine:HETFaceDetectModeVideo]) {
-            [self initCaptureDevice];
-        }
-        else
-        {
-            NSLog(@"--人脸识别引擎无法激活--");
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"人脸识别引擎无法激活" preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self.navigationController popViewControllerAnimated:YES];
-            }]];
-            [self.navigationController presentViewController:alertController animated:YES completion:^{
-                
-            }];
-        }
+    if ([_faceEngine activeEngine:HETFaceDetectModeVideo]) {
+        [self initCaptureDevice];
+    }
+    else
+    {
+        NSLog(@"--人脸识别引擎无法激活--");
+        @weakify(self);
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"人脸识别引擎无法激活" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            @strongify(self);
+            [self.navigationController popViewControllerAnimated:YES];
+        }]];
+        [self.navigationController presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
 }
 
 #pragma mark - device
@@ -329,28 +338,31 @@
 {
     // 请求相机授权
     AVAuthorizationStatus status = [AVCaptureDevice hetGetCameraAuthStatus];
-    if (status != AVAuthorizationStatusAuthorized) {
-        [AVCaptureDevice hetRequestAccessForCamera:^(BOOL granted) {
-            if (granted) {
-                [self prepareCaptureDevice];
-            }
-            else
-            {
-                // 弹框提示无法访问相机
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"无相机访问许可，请更改隐私设置允许访问相机" preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }]];
-                [self.navigationController presentViewController:alertController animated:YES completion:^{
-                    
-                }];
-            }
-        }];
-    }
-    else
-    {
+    if (status == AVAuthorizationStatusAuthorized) {
         [self prepareCaptureDevice];
+        return;
     }
+    
+    @weakify(self);
+    [AVCaptureDevice hetRequestAccessForCamera:^(BOOL granted) {
+        @strongify(self);
+        if (granted)
+        {
+            [self prepareCaptureDevice];
+        }
+        else
+        {
+            // 弹框提示无法访问相机
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"无相机访问许可，请更改隐私设置允许访问相机" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                @strongify(self);
+                [self.navigationController popViewControllerAnimated:YES];
+            }]];
+            [self.navigationController presentViewController:alertController animated:YES completion:^{
+                
+            }];
+        }
+    }];
 }
 
 - (void)prepareCaptureDevice
@@ -360,8 +372,10 @@
     BOOL ret = [_captureDevice prepareCaptureDevice:&error];
     if (!ret) {
         NSLog(@"---相机设备初始化失败--%@",error);
+        @weakify(self);
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"调用相机出错，请重试" preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            @strongify(self);
             [self.navigationController popViewControllerAnimated:YES];
         }]];
         [self.navigationController presentViewController:alertController animated:YES completion:^{
@@ -372,17 +386,34 @@
     // 设置buffer流输出回调
     @weakify(self);
     [_captureDevice setCaptureSampleBufferOutputBlock:^(AVCaptureOutput *output, CMSampleBufferRef sampleBuffer, AVCaptureConnection *connection) {
-        // 对buffer的视频帧进行人脸识别与相关参数检测
         @strongify(self);
+        
+        CVPixelBufferRef pixelBuffer = (CVPixelBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
+        CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+        CIImage *ciImage = [CIImage imageWithCVPixelBuffer:pixelBuffer];
+        UIImage *image = [UIImage imageWithCIImage:ciImage];
+        CVPixelBufferUnlockBaseAddress(pixelBuffer,0);
+        image = [image qmui_imageResizedInLimitedSize:CGSizeMake(120, 120)];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            self.imageView.image = image;
+        });
+        // 对buffer的视频帧进行人脸识别与相关参数检测
         [self.faceEngine processVideoFrameBuffer:sampleBuffer faceInfoCallback:^(HETFaceAnalysisResult *analysisResult) {
+            
+            @strongify(self);
             if (analysisResult) {
+                self.faceAnalysisStatus = analysisResult.status;
                 self.textView.text = analysisResult.printString;
-                // 绘制人脸框
                 NSArray *faces = analysisResult.faces;
                 [self.faceView drawFace:faces];
             }
+            
         } result:^{
-            if (self.shouldAutoTakePhotos) {
+            
+            @strongify(self);
+            // 如果进入了拍照流程，但视频帧人脸状态发生了变化，则放弃拍照
+            if (self.shouldAutoTakePhotos && self.faceAnalysisStatus == HETFaceAnalysisStatusCanTakePhoto) {
                 // 正常状态可以拍照
                 [self clickToTakePhotos:nil];
             }
@@ -400,6 +431,8 @@
     [self.captureDevice startRuning];
 }
 
+
+
 - (void)clearDevice
 {
     if (self.captureDevice) {
@@ -411,7 +444,6 @@
         [_faceEngine destoryEngine];
         _faceEngine = nil;
     }
-    
 }
 
 

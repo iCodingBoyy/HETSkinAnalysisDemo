@@ -39,17 +39,17 @@
     if (![self.faceEngine isValidEngine]) {
         return;
     }
-    NSError *error;
-    BOOL ret = [self.faceEngine isValidImageForSkinAnalysis:self.imageView.image error:&error];
-    if (!ret) {
-        NSLog(@"---error---%@",error);
-        QMUIAlertController *alertController = [QMUIAlertController alertControllerWithTitle:@"提示" message:error.localizedDescription preferredStyle:QMUIAlertControllerStyleAlert];
-        [alertController addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController *aAlertController, QMUIAlertAction *action) {
-            
-        }]];
-        [alertController showWithAnimated:YES];
-        return;
-    }
+//    NSError *error;
+//    BOOL ret = [self.faceEngine isValidImageForSkinAnalysis:self.imageView.image error:&error];
+//    if (!ret) {
+//        NSLog(@"---error---%@",error);
+//        QMUIAlertController *alertController = [QMUIAlertController alertControllerWithTitle:@"提示" message:error.localizedDescription preferredStyle:QMUIAlertControllerStyleAlert];
+//        [alertController addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController *aAlertController, QMUIAlertAction *action) {
+//            
+//        }]];
+//        [alertController showWithAnimated:YES];
+//        return;
+//    }
     
     HSACloudAnalysisViewController *cloudAnalysis = [[HSACloudAnalysisViewController alloc]init];
     cloudAnalysis.image = self.imageView.image;
@@ -93,13 +93,14 @@
     }];
     
     // 对图像对齐处理
-    UIImage *alignImage = [self alignImageWidthAndHeight:self.cameraImage];
-    _imageView = [[UIImageView alloc]initWithImage:alignImage];
+//    UIImage *alignImage = [self alignImageWidthAndHeight:self.cameraImage];
+    _imageView = [[UIImageView alloc]initWithImage:self.cameraImage];
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.imageContainerView addSubview:_imageView];
     
-    CGSize imageSize = alignImage.size;
+    CGSize imageSize = self.cameraImage.size;
     if (imageSize.width > imageSize.height) {
-        CGFloat multipliedByValue = imageSize.height/imageSize.width;
+        CGFloat multipliedByValue = 1.0;//imageSize.height/imageSize.width;
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.left.right.equalTo(self.imageContainerView);
@@ -109,7 +110,7 @@
     }
     else
     {
-        CGFloat multipliedByValue = imageSize.width/imageSize.height;
+        CGFloat multipliedByValue = 1.0;//imageSize.width/imageSize.height;
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.top.bottom.equalTo(self.imageContainerView);

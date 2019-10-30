@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"设置";
+    self.titleView.title = @"设置";
     [self makeConstraints];
 }
 

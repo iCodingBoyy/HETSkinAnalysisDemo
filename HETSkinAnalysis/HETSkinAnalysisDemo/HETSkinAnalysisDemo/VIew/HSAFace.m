@@ -64,7 +64,8 @@ static dispatch_queue_t face_draw_serial_queue() {
 
 - (void)drawFace:(NSArray<id<HETFaceAnalysisResultDelegate>>*)faces
 {
-    hsa_dispatch_async(face_draw_serial_queue(), ^{
+//    hsa_dispatch_async(face_draw_serial_queue(), ^{
+    @synchronized(self) {
         [self.bezierPath removeAllPoints];
         if (faces.count <= 0) {
             hsa_dispatch_async_main(^{
@@ -76,25 +77,22 @@ static dispatch_queue_t face_draw_serial_queue() {
         [faces enumerateObjectsUsingBlock:^(id<HETFaceAnalysisResultDelegate>  _Nonnull faceInfo, NSUInteger idx, BOOL * _Nonnull stop) {
             @strongify(self);
             __block CGRect rect = CGRectZero;
-            hsa_dispatch_sync_main(^{
-                if (self.drawStillImageFace) {
-                    rect = [faceInfo realFaceBoundsInImageView:self.imageView];
-                }
-                else
-                {
-                    rect =  [faceInfo getFaceBoxBounds]; //[faceInfo realFaceBoundsInCameraBounds:[UIScreen mainScreen].bounds];
-                }
-            });
+            if (self.drawStillImageFace) {
+                rect = [faceInfo realFaceBoundsInImageView:self.imageView];
+            }
+            else
+            {
+                rect =  [faceInfo getFaceBoxBounds];
+            }
             [self.bezierPath moveToPoint:CGPointMake(rect.origin.x, rect.origin.y)];
             [self.bezierPath addLineToPoint:CGPointMake(rect.origin.x + CGRectGetWidth(rect), rect.origin.y)];
             [self.bezierPath addLineToPoint:CGPointMake(rect.origin.x + CGRectGetWidth(rect), rect.origin.y+CGRectGetHeight(rect))];
             [self.bezierPath addLineToPoint:CGPointMake(rect.origin.x, rect.origin.y+CGRectGetHeight(rect))];
             [self.bezierPath addLineToPoint:CGPointMake(rect.origin.x, rect.origin.y)];
         }];
-        hsa_dispatch_async_main(^{
-            self.shapeLayer.path = self.bezierPath.CGPath;
-        });
-    });
+        self.shapeLayer.path = self.bezierPath.CGPath;
+    }
+//    });
 }
 
 

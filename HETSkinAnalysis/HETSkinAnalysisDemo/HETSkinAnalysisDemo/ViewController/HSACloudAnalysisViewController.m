@@ -53,15 +53,8 @@
     if (self.image) {
         
         [QMUITips showLoading:@"正在进行肤质分析" inView:self.view];
-        [self.dataEngine analysisImage:self.image progress:^(HETImageAnalysisStep step, CGFloat progress) {
-            if (step == HETImageAnalysisStepUpload) {
-                NSLog(@"--上传进度---%f",progress);
-            }
-            else
-            {
-                NSLog(@"--大数据分析中--");
-            }
-        } result:^(HETSkinAnalysisResult *skinAnalysisResult, id responseJSON, NSError *error) {
+        NSString *urlString = @"https://dev-mdm-s3-website.mkmobileapp.com/UAT/NTS/SkinAnalyzerNative-iOS-SG/fbdcf76d-7f43-4a61-98d8-c496b35d94d9/5B3F0B12-C2C4-4BF7-AFF0-E54E80AD0D43/C8BCB08E-B63E-4E70-819D-3083FD2EA17A.jpg";
+        [self.dataEngine analysisImage:urlString result:^(HETSkinAnalysisResult *skinAnalysisResult, id responseJSON, NSError *error) {
             [QMUITips hideAllTips];
 //            NSLog(@"----responseJSON----%@",responseJSON);
             NSLog(@"----skinAnalysisResult----%@",skinAnalysisResult.modelDescription);
